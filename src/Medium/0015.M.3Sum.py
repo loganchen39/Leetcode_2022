@@ -180,3 +180,51 @@ class Solution:
         return list(set_res)
     
     
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        """
+        :\Algo. 5.
+        : TC: 63.81%, O(n^2), 2-loop
+        : SC: 73.61%, O(n), for returned result list.
+        :
+        :\Algo. 5. similar to Algo. 3 with a few more improvements, 
+        : a. For current fixed/pivot element i, the low pointer does NOT need start with 0, or you'll have duplicates 
+        : and then you need to use hash set to avoid it, it actually can start with i+1. Think about it, if every time 
+        : the low pointer starts with 0, say [nums[0], nums[i], nums[i+k]] is a satisfied triplet for i, it should already 
+        : be added for fixed element when i=0.
+        : b. In the main function threeSum, in the main loop over fixed element, you need skip the next elements if they 
+        : are equal to the previous pivot element, or you'll have duplicates. 
+        """
+        n = len(nums)
+        nums.sort()
+        res = []
+        
+        for i in range(n):
+            if nums[i] > 0:
+                break
+            if i==0 or nums[i]!=nums[i-1]:
+                self.twoSumII(nums, i, res)
+        
+        return res
+            
+   
+    def twoSumII(self, nums: List[int], i: int, res: list):
+        lo, hi = i+1, len(nums) - 1
+        while lo < hi:
+            if nums[i] + nums[lo] + nums[hi] < 0:
+                lo += 1
+            elif nums[i] + nums[lo] + nums[hi] > 0:
+                hi -= 1
+            else:
+                res.append([nums[i], nums[lo], nums[hi]])
+                num_lo = nums[lo]
+                lo += 1
+                while nums[lo] == num_lo and lo < hi:
+                    lo += 1
+                    
+                num_hi = nums[hi]    
+                hi -= 1
+                while nums[hi] == num_hi and lo < hi:
+                    hi -= 1
+                    
+                    
