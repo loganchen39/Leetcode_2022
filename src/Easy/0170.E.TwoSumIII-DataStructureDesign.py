@@ -30,3 +30,29 @@ class TwoSum:
 # param_2 = obj.find(value)
 
 
+class TwoSum:
+    '''
+    :\Algo. 2, use hash table (dict) as data structure, Algo. 1 used list,
+    : TC: 74.79%, add(), O(1); find(), O(n), 
+    : SC: 28.37%, add(), O(n), find(), O(1),
+    '''
+    
+    def __init__(self):
+        self.data = {}
+        
+    def add(self, number: int) -> None:
+        # self.array.append(number)
+        if number in self.data: 
+            self.data[number] += 1
+        else:
+            self.data[number] = 1
+        
+    def find(self, value: int) -> bool:
+        for key in self.data:
+            if value-key in self.data:
+                if key != value-key or self.data[key] >= 2:
+                    return True
+        
+        return False
+
+
