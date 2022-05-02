@@ -6,7 +6,8 @@ class Solution:
         : then 2-loop to calculate and compare subarray_sum and the target k.
         : TC: O(n^2), run 1: 72 / 90 test cases passed, Status: Time Limit Exceeded
         : SC: O(1), without deep copy. 
-        : For the BF algo. which uses about n nested loops to calculate subarray sum, don't even think about it.
+        :\For the BF algo. which uses about 3 nested loops (start, i, end) to calculate subarray sum, should be O(n^3).
+        : 
         '''
       
         n = len(nums)
