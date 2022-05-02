@@ -27,3 +27,32 @@ class Solution:
         return res_max
       
       
+class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
+        '''
+        :\Algo. 2, two-pointer with sorted order, 
+        : Special case, k=10, nums: 1, 2, 3, ..., 7, 8, 8, 8, 9, once 2 and the last 8 make a pair, 
+        : they will be removed, the rest two 8 will not be made pair with the 2 again. 
+        : TC: O(nxlogn), 38.85%
+        : SC: O(1), 71.30%
+        '''
+            
+        n = len(nums)
+        nums.sort()
+        res_max = 0
+        lo, hi = 0, n-1
+        
+        while lo < hi:
+            s = nums[lo] + nums[hi]
+            if s < k:
+                lo += 1
+            elif s > k:
+                hi -= 1
+            else:
+                res_max += 1
+                lo += 1
+                hi -= 1
+        
+        return res_max
+    
+    
