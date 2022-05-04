@@ -143,7 +143,7 @@ class Solution:
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         '''
-        :\Algo. 4, use recursion, move pointers or skip calling function to avoid duplicates 
+        :\Algo. 4, use recursion for any kSum, move pointers or skip calling function to avoid duplicates 
         : without set, the idea of which is similar to 3Sum. Another key idea similar to 3Sum 
         : is that for each current i (e.g. 10), in order to find the rest (target - nums[i]), 
         : you go find in the nums[i+1, :], NO NEED to start from 0, 1, etc. whose cases have 
