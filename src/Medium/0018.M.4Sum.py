@@ -140,3 +140,53 @@ class Solution:
         return set_res
     
     
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        '''
+        :\Algo. 4, use recursion, move pointers or skip calling function to avoid duplicates 
+        : without set, the idea of which is similar to 3Sum. Another key idea similar to 3Sum 
+        : is that for each current i (e.g. 10), in order to find the rest (target - nums[i]), 
+        : you go find in the nums[i+1, :], NO NEED to start from 0, 1, etc. whose cases have 
+        : already been included previously when i=0, 1, etc. 
+        : TC: O(n^3), 3=k-2+1, for twoSum you have O(n), 55.60%
+        : SC: O(kn)? , 65.02% 
+        '''
+        
+        # defined inside of the function fourSum, thus no self
+        def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
+            lst_res = []    
+            
+            if k == 2:  # stop/end condition for recursion
+                return twoSum(nums, target)
+            
+            for i in range(len(nums)):
+                if i == 0 or nums[i] != nums[i-1]: 
+                    subset = kSum(nums[i+1:], target-nums[i], k-1)
+                    for lst_elem in subset:
+                        lst_res.append([nums[i]] + lst_elem)
+            
+            return lst_res
+                
+        def twoSum(nums: List[int], target: int) -> List[List[int]]:
+            lst_res = []
+            lo, hi = 0, len(nums)-1
+            while lo < hi:
+                s = nums[lo] + nums[hi]
+                if s < target:
+                    lo += 1
+                elif s > target: 
+                    hi -= 1
+                else:
+                    lst_res.append([nums[lo], nums[hi]])
+                    num_lo = nums[lo]
+                    hi -= 1
+                    lo += 1
+                    while lo < hi and nums[lo] == num_lo:
+                        lo += 1
+            
+            return lst_res
+                        
+        nums.sort()
+        return kSum(nums, target, 4)
+    
+    
