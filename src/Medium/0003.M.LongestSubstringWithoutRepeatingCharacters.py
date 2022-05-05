@@ -58,3 +58,39 @@ class Solution:
         return res
     
     
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        '''
+        :\Algo. 3, sliding window with two-pointer left & right, move the two-pointer and record the longest substring. 
+        : TC: O(2n)=O(n), 93.67%
+        : SC: O(m), m being the number of the longest substring. 51.82%
+        '''
+        
+        n = len(s)
+        if n == 0:
+            return 0
+        
+        l, r = 0, 0
+        res = 0
+        set_existed = set()
+        
+        for i in range(n):
+            if s[i] not in set_existed:
+                set_existed.add(s[i])
+                r = i
+            else:
+                if r-l+1 > res:
+                    res = r-l+1
+                r = i
+                while s[l] != s[i]:
+                    set_existed.remove(s[l])
+                    l += 1
+                else:    
+                    l += 1
+        else:
+            if r-l+1 > res:
+                res = r-l+1
+        
+        return res
+    
+    
