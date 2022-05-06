@@ -153,6 +153,9 @@ class Solution:
         
         while i < n and s[i].isdigit():
             digit = int(s[i])
+            #\One trick here for the "or" condition, if sign==1, no problem; if sign==-1, 
+            # then "digit > INT_MAX%10" <=> "digit >= 8", 
+            # then if digit==8, it's the INT_MIN value, if digit>8, underflow, still need to return INT_MIN. 
             if result > INT_MAX//10 or (result == INT_MAX//10 and digit > INT_MAX%10):
                 return INT_MAX if sign==1 else INT_MIN  # not sign*result
             
