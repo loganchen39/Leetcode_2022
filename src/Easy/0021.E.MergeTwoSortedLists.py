@@ -62,7 +62,7 @@ class Solution:
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         '''
-        :\Similar to algo. 1, while-loop, the keypoint is, you gotta keep a prev pointer pointing to the 
+        :\Algo. 2, Similar to algo. 1, while-loop, the keypoint is, you gotta keep a prev pointer pointing to the 
         : current node in the merged list, and l1 and l2 pointers point to the current next nodes in list1 
         : and list2. As Tao Jing said, one of the most important trick with linked list is to use dummy node. 
         : TC: O(n+m), 60.15%
@@ -88,6 +88,28 @@ class Solution:
         return prehead.next
     
     
-# Algo. 3, recursion. 
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        '''
+        :\Algo. 3, use recursion. 
+        : TC: O(n+m), 57.61%
+        : SC: O(n+m) for stack for recursion, 33.72%
+        '''
+        
+        if not list1 and not list2:  # base cases
+            return None
+        elif not list2:
+            return list1
+        elif not list1:
+            return list2
+        
+        if list1.val <= list2.val:
+            pt = self.mergeTwoLists(list1.next, list2)
+            list1.next = pt
+            return list1
+        else:
+            pt = self.mergeTwoLists(list1, list2.next)
+            list2.next = pt
+            return list2
 
 
