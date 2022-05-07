@@ -26,3 +26,39 @@ class Solution:
         return prev
     
     
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        '''
+        :\Algo. 2, same as Algo. 1 with slight improvement by setting prev, curr = None, head
+        : TC: O(n), 64.89%
+        : SC: O(1), 94.58%
+        '''
+        
+        prev, curr = None, head
+        while curr:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        
+        return prev
+    
+    
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:   
+        '''
+        :\Algo. 3, recursion. 
+        : TC: O(n), 78.73%
+        : SC: O(n) for recursion stack, 9.95%
+        '''
+        
+        if not head or not head.next:  # base case
+            return head
+        
+        h = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        
+        return h
+    
+    
