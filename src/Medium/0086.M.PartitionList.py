@@ -45,3 +45,52 @@ class Solution:
             return lt
         
         
+class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        '''
+        :\Algo. 2, Process directly on the original linked list to connect and reconnect, 
+        : key point is to have pointers of lt_st, lt_end, ge_st, ge_end for recording the current position. 
+        : TC: O(n), 42.69%
+        : SC: O(1), 77.60%
+        '''
+        
+        lt_st, lt_end, ge_st, ge_end = None, None, None, None
+        pt = head
+        while pt:
+            if pt.val < x:
+                if not lt_end:
+                    if not ge_end: # lt comes first
+                        lt_st, lt_end = pt, pt
+                        pt = pt.next
+                    else:
+                        next = pt.next
+                        pt.next = ge_st
+                        lt_st, lt_end = pt, pt
+                        head = pt
+                        ge_end.next = next
+                        pt = next
+                else:
+                    if not ge_end:
+                        lt_end = pt
+                        pt = pt.next
+                    else:
+                        next = pt.next
+                        ge_end.next = next
+                        lt_end.next = pt
+                        lt_end = pt
+                        pt.next = ge_st
+                        pt = next
+            else:  # pt.val >= x
+                if not ge_end:
+                    ge_st, ge_end = pt, pt
+                    pt = pt.next
+                else:
+                    ge_end = pt
+                    pt = pt.next
+        
+        if ge_end:
+            ge_end.next = None
+            
+        return head
+    
+    
