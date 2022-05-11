@@ -94,3 +94,30 @@ class Solution:
         return head
     
     
+class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        '''
+        :\3. Algo. 3, Two-pointer, The power of using the dummy nodes before_head and 
+        : after_head! It will reconnect pointers directly on the original list. Similar 
+        : idea to Algo. 2 but a lot simpler with dummy nodes which can reduce the number of 
+        : conditional checks as in Algo. 2!
+        : TC: O(n), 91.65%
+        : SC: O(1), 77.60%
+        '''
+        
+        before = before_head = ListNode(0)
+        after  = after_head  = ListNode(0)
+        while head:
+            if head.val < x:
+                before.next = head
+                before = head
+            else:
+                after.next = head
+                after = head
+            head = head.next
+        
+        after.next = None
+        before.next = after_head.next
+        return before_head.next
+    
+    
