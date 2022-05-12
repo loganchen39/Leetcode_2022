@@ -29,3 +29,27 @@ class Solution:
         return -1
     
     
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        '''
+        :\Algo. 2, very similar to Algo. 1, but relatively simpler. Here instead of 
+        : "left=mid", it uses "left=mid+1", etc. then after the while-loop, it no 
+        : longer needs to check the final left or right numbers.
+        : TC: O(logn), 96.59%
+        : SC: O(1), 73.91%
+        '''
+        
+        n = len(nums)
+        left, right = 0, n-1
+        while left <= right:
+            mid = int((left+right)/2)
+            if nums[mid] == target: 
+                return mid
+            elif nums[mid] < target:
+                left = mid+1
+            else:
+                right = mid-1
+        
+        return -1
+    
+    
