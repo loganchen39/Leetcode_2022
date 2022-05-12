@@ -49,3 +49,31 @@ class Solution:
             return -1
         
         
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        '''
+        :\Algo. 2, very similar to Algo. 1, but simpler, no need to differentiate as 2 scenarios.
+        : TC: O(logn), 80.16%
+        : SC: O(1), 64.96%
+        '''
+            
+        if reader.get(0) == target:
+            return 0
+        
+        left, right = 0, 1
+        while target > reader.get(right):
+            left = right+1
+            right *= 2
+        
+        while left <= right:
+            mid = int((left+right)/2)
+            if target == reader.get(mid):
+                return mid
+            elif target < reader.get(mid):
+                right = mid - 1
+            else:
+                left = mid + 1
+            
+        return -1
+    
+    
