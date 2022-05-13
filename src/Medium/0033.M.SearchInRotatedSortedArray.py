@@ -92,6 +92,7 @@ class Solution:
         '''
         :\Failed to re-implement Algo. 1, because it's relatively more complicated to 
         : handle all kinds of scenarios. 
+        :\take a look at the Leetcode Approach 2, to use the key info. int the Algo. 2.
         '''
         
         n = len(nums)
@@ -110,6 +111,34 @@ class Solution:
                     lo = mid + 1
                 else:
                     hi = mid - 1
+            
+        return -1
+    
+    
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        '''
+        :\Use Approach 2 to re-implement Algo 1., 
+        : TC: O(logn), 73.07%
+        : SC: O(1), 57.78%
+        '''
+            
+        n = len(nums)
+        lo, hi = 0, n-1
+        while lo <= hi:
+            mid = (lo+hi)//2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] >= nums[lo]:
+                if target >= nums[lo] and target <= nums[mid]:
+                    hi = mid - 1
+                else:
+                    lo = mid + 1
+            else:  # nums[mid] < nums[lo]
+                if target < nums[mid] or target >= nums[lo]:
+                    hi = mid - 1
+                else:
+                    lo = mid + 1
             
         return -1
     
