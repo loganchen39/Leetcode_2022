@@ -87,3 +87,30 @@ class Solution:
         return -1
     
     
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        '''
+        :\Failed to re-implement Algo. 1, because it's relatively more complicated to 
+        : handle all kinds of scenarios. 
+        '''
+        
+        n = len(nums)
+        lo, hi = 0, n-1
+        while lo <= hi:
+            mid = (lo+hi)//2
+            if nums[mid] == target:
+                return mid
+            elif target < nums[mid]:
+                if target >= nums[lo]:
+                    hi = mid - 1
+                else:
+                    lo = mid + 1
+            else:  # target > nums[mid]
+                if target <= nums[lo]:
+                    lo = mid + 1
+                else:
+                    hi = mid - 1
+            
+        return -1
+    
+    
