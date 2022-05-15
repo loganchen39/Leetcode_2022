@@ -25,3 +25,25 @@ class Solution:
         return lst_res
     
     
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        '''
+        :\Algo. 2, iteration not recursion, failed with wrong order.
+        '''
+        
+        if not root:
+            return []
+        
+        stack_pt = [root]
+        lst_res = []
+        while stack_pt:
+            pt = stack_pt.pop(0)
+            lst_res.append(pt.val)
+            if pt.left:
+                stack_pt.append(pt.left)
+            if pt.right:
+                stack_pt.append(pt.right)
+        
+        return lst_res
+    
+    
