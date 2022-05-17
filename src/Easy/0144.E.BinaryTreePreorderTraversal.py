@@ -7,7 +7,7 @@
 class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         '''
-        :\1. Algo. 1, BF recursion, define a new recursion function.
+        :\1. Algo. 1, BF recursion with recursion stack, define a new recursion function.
         : TC: O(?), 52.30%
         : SC: O(?) stack?, 60.40%
         '''
@@ -52,8 +52,8 @@ class Solution:
         '''
         :\Algo. 2, iteration not recursion, failed with wrong order first, now 
         : succeeded, push/append the right child first so it'll pop last. 
-        : TC: O(n), n being the total number of nodes, 5.34%
-        : SC: O(m), m being the highest height, 60.13%
+        : TC: O(n), n being the total number of nodes, 69.26%
+        : SC: O(m), m being the highest height, up to n, 60.13%
         '''
         
         if not root:
@@ -62,9 +62,9 @@ class Solution:
         lst_res = []
         stack = [root]
         while stack:
-            pt = stack.pop(-1)
+            pt = stack.pop()  # pop the last element
             lst_res.append(pt.val)
-            if pt.right:
+            if pt.right:  # if pt.right is not None:
                 stack.append(pt.right)
             if pt.left:
                 stack.append(pt.left)
