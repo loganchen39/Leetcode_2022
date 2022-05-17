@@ -47,3 +47,28 @@ class Solution:
         return lst_res
     
     
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        '''
+        :\Algo. 2, iteration not recursion, failed with wrong order first, now 
+        : succeeded, push/append the right child first so it'll pop last. 
+        : TC: O(n), n being the total number of nodes, 5.34%
+        : SC: O(m), m being the highest height, 60.13%
+        '''
+        
+        if not root:
+            return []
+        
+        lst_res = []
+        stack = [root]
+        while stack:
+            pt = stack.pop(-1)
+            lst_res.append(pt.val)
+            if pt.right:
+                stack.append(pt.right)
+            if pt.left:
+                stack.append(pt.left)
+        
+        return lst_res
+    
+    
