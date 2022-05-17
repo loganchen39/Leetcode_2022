@@ -85,3 +85,27 @@ class Solution:
         return lst_res
     
     
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        '''
+        :\Algo. 4, iteration with stack, from 
+        : https://leetcode.com/problems/binary-tree-postorder-traversal/discuss/2037928/Iterative-Python-Solution
+        : [L R root] <=> reverse [root R L] which now is similar to preorder traversal.
+        : TC: O(n), n being the total number of nodes, 55.25%
+        : SC: O(m), m being the highest height of the tree, worst case m=n, 97.26%
+        '''
+        
+        if not root:
+            return []
+
+        ret = []
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            if node:
+                ret.append(node.val)
+                stack.append(node.left)
+                stack.append(node.right)
+        return ret[::-1]
+    
+    
