@@ -43,7 +43,11 @@ class Solution:
 class Solution:
     def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
         '''
-        :\Algo. 2 iteration with explicit stack, 
+        :\Algo. 2 iteration with explicit stack, initially HAVE NO IDEA how to implement, as 
+        : I didn't know how to collect the paths. Key points below,
+        : A. Be aware you can only traverse from root to leaf, then how do you collect paths along the way.
+        : B. For each node nd, there's only one route thus one path from root to it, you need to 
+        : attach and record the path to the node within the stack. 
         : TC: O(n), 46.35%, n being the number of nodes, each node is visited exactly once.
         : SC: O(h), 29.60%, h being the maximum height, worst case h=n.
         '''
