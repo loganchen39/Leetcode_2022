@@ -8,8 +8,8 @@ class Solution:
     def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
         '''
         :\Algo. 1 BF recursion with implicit function call stack.
-        : TC: O(n), 7.30%, n being the number of nodes.
-        : SC: O(h), 29.62%, h being the maximum height.
+        : TC: O(n), 7.30%, n being the number of nodes, each node is visited exactly once.
+        : SC: O(h), 29.62%, h being the maximum height, worst case h=n.
         '''
         
         def paths(pt):
