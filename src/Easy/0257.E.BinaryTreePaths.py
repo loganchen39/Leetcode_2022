@@ -40,3 +40,28 @@ class Solution:
         return paths(root)
     
     
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+        '''
+        :\Algo. 2 iteration with explicit stack, 
+        : TC: O(n), 46.35%, n being the number of nodes, each node is visited exactly once.
+        : SC: O(h), 29.60%, h being the maximum height, worst case h=n.
+        '''
+        
+        if not root:
+            return []
+        
+        lst_res = []
+        stack = [(root, str(root.val))]
+        while stack:
+            pt, str_path = stack.pop()
+            if pt.left:
+                stack.append((pt.left, str_path+'->'+str(pt.left.val)))
+            if pt.right:
+                stack.append((pt.right, str_path+'->'+str(pt.right.val)))
+            if not pt.left and not pt.right:
+                lst_res.append(str_path)
+        
+        return lst_res
+    
+    
