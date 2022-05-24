@@ -37,3 +37,42 @@ class Solution:
         return nd_first
     
     
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+
+class Solution:
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        '''
+        :\Algo. 2, Iterative BFS with a queue (deque) from Approach 2. Just follow the Approach 2, 
+        : need to understand more.
+        : TC: O(n+e), 49.20%,
+        : SC: O(n+e), 77.87%
+        '''
+        
+        if not node:
+            return node
+        
+        if not node.neighbors:
+            node_cp = Node(node.val)
+            return node_cp
+        
+        q = deque([node])
+        node_first = Node(node.val)
+        visited = {node:node_first}
+        while q:
+            nd = q.popleft()
+            for neighbor in nd.neighbors:
+                if neighbor not in visited:
+                    visited[neighbor] = Node(neighbor.val)
+                    q.append(neighbor)
+                    
+                visited[nd].neighbors.append(visited[neighbor])
+        
+        return node_first
+    
+    
