@@ -41,4 +41,40 @@ class Solution:
         return res
       
       
-  
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        '''
+        :\Algo. 2, recursive DFS traversal, use a set visited to record all the 
+        : nodes (i, j) that have been visited.
+        : TC: O(mxn), 59.79%, 2-loop, 
+        : SC: O(mxn), 26.28%, worst case for the function call stack, e.g. all '1', 
+        '''
+        
+        def DFSTraversal(grid, i, j, visited):
+            m, n = len(grid), len(grid[0])
+            visited.add((i, j))
+            if j+1 < n and grid[i][j+1] == '1' and (i, j+1) not in visited:
+                DFSTraversal(grid, i, j+1, visited)
+            if j-1 >= 0 and grid[i][j-1] == '1' and (i, j-1) not in visited:
+                DFSTraversal(grid, i, j-1, visited)
+            if i+1 < m and grid[i+1][j] == '1' and (i+1, j) not in visited:
+                DFSTraversal(grid, i+1, j, visited)
+            if i-1 >= 0 and grid[i-1][j] == '1' and (i-1, j) not in visited:
+                DFSTraversal(grid, i-1, j, visited)
+                    
+                    
+        m, n = len(grid), len(grid[0])
+        res = 0
+        visited = set()
+        
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == '1':
+                    if (i,j) in visited:
+                        continue
+                    res += 1
+                    DFSTraversal(grid, i, j, visited)
+        
+        return res  
+
+    
