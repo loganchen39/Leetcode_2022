@@ -26,6 +26,7 @@ time= 3 , idx= 3 , perm= [1, 2, 3]
 idx==n, return from one recursion.
 before perm.pop(), perm= [1, 2, 3]
 before perm.pop(), perm= [1, 2]
+
 i= 2 , before checking if existed, perm= [1]
 i= 2 , after checking if existed, perm= [1, 3] , entering recursive backtrack function.
 time= 4 , idx= 2 , perm= [1, 3]
