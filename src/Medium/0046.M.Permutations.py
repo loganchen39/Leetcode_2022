@@ -12,26 +12,26 @@ class Solution:
         : The output for case [1,2,3] are as follows.
 time= 0 , idx= 0 , perm= []
 i= 0 , before checking if existed, perm= []
-i= 0 , after checking if existed, perm= [1]
+i= 0 , after checking if existed, perm= [1] , entering recursive backtrack function.
 time= 1 , idx= 1 , perm= [1]
 i= 0 , before checking if existed, perm= [1]
 i= 1 , before checking if existed, perm= [1]
-i= 1 , after checking if existed, perm= [1, 2]
+i= 1 , after checking if existed, perm= [1, 2] , entering recursive backtrack function.
 time= 2 , idx= 2 , perm= [1, 2]
 i= 0 , before checking if existed, perm= [1, 2]
 i= 1 , before checking if existed, perm= [1, 2]
 i= 2 , before checking if existed, perm= [1, 2]
-i= 2 , after checking if existed, perm= [1, 2, 3]
+i= 2 , after checking if existed, perm= [1, 2, 3] , entering recursive backtrack function.
 time= 3 , idx= 3 , perm= [1, 2, 3]
 idx==n, return from one recursion.
 before perm.pop(), perm= [1, 2, 3]
 before perm.pop(), perm= [1, 2]
 i= 2 , before checking if existed, perm= [1]
-i= 2 , after checking if existed, perm= [1, 3]
+i= 2 , after checking if existed, perm= [1, 3] , entering recursive backtrack function.
 time= 4 , idx= 2 , perm= [1, 3]
 i= 0 , before checking if existed, perm= [1, 3]
 i= 1 , before checking if existed, perm= [1, 3]
-i= 1 , after checking if existed, perm= [1, 3, 2]
+i= 1 , after checking if existed, perm= [1, 3, 2] , entering recursive backtrack function.
 time= 5 , idx= 3 , perm= [1, 3, 2]
 idx==n, return from one recursion.
 before perm.pop(), perm= [1, 3, 2]
@@ -39,25 +39,25 @@ i= 2 , before checking if existed, perm= [1, 3]
 before perm.pop(), perm= [1, 3]
 before perm.pop(), perm= [1]
 i= 1 , before checking if existed, perm= []
-i= 1 , after checking if existed, perm= [2]
+i= 1 , after checking if existed, perm= [2] , entering recursive backtrack function.
 time= 6 , idx= 1 , perm= [2]
 i= 0 , before checking if existed, perm= [2]
-i= 0 , after checking if existed, perm= [2, 1]
+i= 0 , after checking if existed, perm= [2, 1] , entering recursive backtrack function.
 time= 7 , idx= 2 , perm= [2, 1]
 i= 0 , before checking if existed, perm= [2, 1]
 i= 1 , before checking if existed, perm= [2, 1]
 i= 2 , before checking if existed, perm= [2, 1]
-i= 2 , after checking if existed, perm= [2, 1, 3]
+i= 2 , after checking if existed, perm= [2, 1, 3] , entering recursive backtrack function.
 time= 8 , idx= 3 , perm= [2, 1, 3]
 idx==n, return from one recursion.
 before perm.pop(), perm= [2, 1, 3]
 before perm.pop(), perm= [2, 1]
 i= 1 , before checking if existed, perm= [2]
 i= 2 , before checking if existed, perm= [2]
-i= 2 , after checking if existed, perm= [2, 3]
+i= 2 , after checking if existed, perm= [2, 3] , entering recursive backtrack function.
 time= 9 , idx= 2 , perm= [2, 3]
 i= 0 , before checking if existed, perm= [2, 3]
-i= 0 , after checking if existed, perm= [2, 3, 1]
+i= 0 , after checking if existed, perm= [2, 3, 1] , entering recursive backtrack function.
 time= 10 , idx= 3 , perm= [2, 3, 1]
 idx==n, return from one recursion.
 before perm.pop(), perm= [2, 3, 1]
@@ -66,24 +66,24 @@ i= 2 , before checking if existed, perm= [2, 3]
 before perm.pop(), perm= [2, 3]
 before perm.pop(), perm= [2]
 i= 2 , before checking if existed, perm= []
-i= 2 , after checking if existed, perm= [3]
+i= 2 , after checking if existed, perm= [3] , entering recursive backtrack function.
 time= 11 , idx= 1 , perm= [3]
 i= 0 , before checking if existed, perm= [3]
-i= 0 , after checking if existed, perm= [3, 1]
+i= 0 , after checking if existed, perm= [3, 1] , entering recursive backtrack function.
 time= 12 , idx= 2 , perm= [3, 1]
 i= 0 , before checking if existed, perm= [3, 1]
 i= 1 , before checking if existed, perm= [3, 1]
-i= 1 , after checking if existed, perm= [3, 1, 2]
+i= 1 , after checking if existed, perm= [3, 1, 2] , entering recursive backtrack function.
 time= 13 , idx= 3 , perm= [3, 1, 2]
 idx==n, return from one recursion.
 before perm.pop(), perm= [3, 1, 2]
 i= 2 , before checking if existed, perm= [3, 1]
 before perm.pop(), perm= [3, 1]
 i= 1 , before checking if existed, perm= [3]
-i= 1 , after checking if existed, perm= [3, 2]
+i= 1 , after checking if existed, perm= [3, 2] , entering recursive backtrack function.
 time= 14 , idx= 2 , perm= [3, 2]
 i= 0 , before checking if existed, perm= [3, 2]
-i= 0 , after checking if existed, perm= [3, 2, 1]
+i= 0 , after checking if existed, perm= [3, 2, 1] , entering recursive backtrack function.
 time= 15 , idx= 3 , perm= [3, 2, 1]
 idx==n, return from one recursion.
 before perm.pop(), perm= [3, 2, 1]
