@@ -76,7 +76,7 @@ class Solution:
         : to be finished!
         :\Algo. 1, approach 1, backtracking, iteration & recursive DFS tree traversal to searh all possible 
         : combinations and check. 
-        : TC: O(?), 75.93%
+        : TC: O(N^((T/M)+1)), 75.93%, equals to the number of node in the n-ary tree. A loose upper bound estimate.
         : SC: O(?), 58.30%
         : 
         : For test case example 1, below are the output.
@@ -171,6 +171,7 @@ i= 3
             self.time += 1
             
             if remain == 0:
+                # make a deep copy of the current combination, how? 
                 results.append(list(comb))  # the 'list' is necessary, why?
                 return
             elif remain < 0:
@@ -179,7 +180,9 @@ i= 3
             for i in range(start, len(candidates)):
                 print('i=', i)
                 comb.append(candidates[i])
+                # give the current number another chance, rather than moving on
                 backtrack(remain-candidates[i], comb, i)
+                # backtrack, remove the number from the combination
                 comb.pop()  # backtrack, return to upper level.
         
         backtrack(target, [], 0)
