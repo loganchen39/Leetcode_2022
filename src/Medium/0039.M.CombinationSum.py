@@ -179,7 +179,7 @@ i= 3
                 print('i=', i)
                 comb.append(candidates[i])
                 backtrack(remain-candidates[i], comb, i)
-                comb.pop()
+                comb.pop()  # backtrack, return to upper level.
         
         backtrack(target, [], 0)
         return results
