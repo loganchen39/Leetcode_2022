@@ -77,7 +77,7 @@ class Solution:
         :\Algo. 1, approach 1, backtracking, iteration & recursive DFS tree traversal to searh all possible 
         : combinations and check. 
         : TC: O(N^((T/M)+1)), 75.93%, equals to the number of node in the n-ary tree. A loose upper bound estimate.
-        : SC: O(?), 58.30%
+        : SC: O(T/M), 58.30%, T/M is the maximum depth of the tree, for recursion function call stack. 
         : 
         : For test case example 1, below are the output.
 time:  0 , remain= 7 , comb= [] , start= 0
