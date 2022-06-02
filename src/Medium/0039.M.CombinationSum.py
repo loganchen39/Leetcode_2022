@@ -74,7 +74,8 @@ class Solution:
         : \One key point to understand: In each (deep) level of recursion function call, there's a for-loop, 
         : when it finishes and return back to upper-level recursion call, there's still a for-loop needs 
         : to be finished!
-        :\Algo. 1, approach 1, backtracking, iteration & recursive DFS to searh all possible combinations and check. 
+        :\Algo. 1, approach 1, backtracking, iteration & recursive DFS tree traversal to searh all possible 
+        : combinations and check. 
         : TC: O(?), 75.93%
         : SC: O(?), 58.30%
         : 
